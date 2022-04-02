@@ -26,4 +26,22 @@ app.post('/livros', (req, res) => {
     res.status(201).json(livros);
 })
 
+app.put('/livros/:id', (req, res) => {
+    let index = buscaLivro(req.params.id);
+    livros[index].titulo = req.body.titulo;
+    res.status(200).json(livros);
+})
+
+app.get('/livros/:id', (req, res) => {
+    let index = buscaLivro(req.params.id);
+    res.status(200).json(livros[index]);
+})
+
+
+
+function buscaLivro(id) {
+    const livro = livros.findIndex(livro => livro.id == id);
+    return livro;
+}
+
 module.exports = app;
