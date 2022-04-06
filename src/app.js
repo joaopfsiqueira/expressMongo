@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const db = require('./config/dbConnect');
-
+const livros = require('./models/Livro.js');
 //conexão com o db e configurando mensagem de erro no bind do console.
 db.on("error", console.log.bind(console, 'connection error:'));
 
@@ -13,10 +13,10 @@ db.once("open", () => {
 //fazendo express ouvir json
 app.use(express.json());
 
-const livros = [
-    {id: 1, "titulo": "Senhor dos aneis", "autor": "J.R.R. Tolkien"},
-    {id: 2, "titulo": "O Hobbit", "autor": "J.R.R. Tolkien"},
-]
+// const livros = [
+//     {id: 1, "titulo": "Senhor dos aneis", "autor": "J.R.R. Tolkien"},
+//     {id: 2, "titulo": "O Hobbit", "autor": "J.R.R. Tolkien"},
+// ]
 
 app.get('/', (req, res) => {
     res.status(200);
@@ -25,7 +25,14 @@ app.get('/', (req, res) => {
 
 
 app.get('/livros', (req, res) => {
-    res.status(200).json(livros);
+    livros.find((err, livros) => {
+        if (err) {
+            res.status(500);
+            res.send('Erro ao buscar livros');
+        } else {
+            res.status(200).json(livros);
+        }
+    })
 })
 
 app.post('/livros', (req, res) => {

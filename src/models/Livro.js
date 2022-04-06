@@ -5,7 +5,7 @@ const livroSchema = new mongoose.Schema({
     title: { type: String, required: true},
     autor: { type: String, required: true},
     editora: { type: String, required: true},
-    numeroPaginas: {type: number}
+    numeroPaginas: {type: Number}
     }
 );
 
