@@ -25,17 +25,6 @@ routes(app)
 // ]
 
 
-app.put('/livros/:id', (req, res) => {
-    let index = buscaLivro(req.params.id);
-    livros[index].titulo = req.body.titulo;
-    res.status(200).json(livros);
-})
-
-app.get('/livros/:id', (req, res) => {
-    let index = buscaLivro(req.params.id);
-    res.status(200).json(livros[index]);
-})
-
 app.delete('/livros/:id', (req, res) => {
     let {id} = req.params;
     let index = buscaLivro(id);
