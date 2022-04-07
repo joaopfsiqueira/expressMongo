@@ -73,6 +73,20 @@ class LivroController {
             }
         })
 
+
+        //um outro jeito de fazer isso: 
+        // const id = req.params.id;
+        // livros.findByIdAndDelete(id, (err, livro) => {
+        //     if (!err) {if(!livro){
+        //         res.status(404).send({message: 'Livro não encontrado'});
+        //     } else {
+        //         res.status(200).send({message: 'Livro deletado com sucesso'});
+        //     }
+        //     } else {
+        //         res.status(500).send({message: err.message});
+        //     }
+        // })
+
     }
 } 
 
