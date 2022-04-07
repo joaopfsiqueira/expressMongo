@@ -24,17 +24,6 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/livros', (req, res) => {
-    livros.find((err, livros) => {
-        if (err) {
-            res.status(500);
-            res.send('Erro ao buscar livros');
-        } else {
-            res.status(200).json(livros);
-        }
-    })
-})
-
 app.post('/livros', (req, res) => {
     livros.push(req.body);
     res.status(201).json(livros);
