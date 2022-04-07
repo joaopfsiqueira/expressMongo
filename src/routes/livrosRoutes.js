@@ -7,6 +7,7 @@ const router = express.Router();
 router
     .get("/livros", LivroController.listarLivros)
     .post("/livros", LivroController.cadastrarLivros)
+    .put("/livros/:id", LivroController.atualizarLivros) // : indica que vai chegar um parametro na rota com o nome especificado.
 
 
 module.exports = router;
