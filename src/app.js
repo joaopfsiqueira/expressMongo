@@ -25,11 +25,6 @@ routes(app)
 // ]
 
 
-app.post('/livros', (req, res) => {
-    livros.push(req.body);
-    res.status(201).json(livros);
-})
-
 app.put('/livros/:id', (req, res) => {
     let index = buscaLivro(req.params.id);
     livros[index].titulo = req.body.titulo;
