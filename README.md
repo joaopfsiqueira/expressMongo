@@ -5,6 +5,7 @@ Essa API serve é um projeto feito para por em prática os conhecimentos de expr
 
 ## Observações
 - Dentro de src/config tem um arquivo "dbConnect.js", é nele que é feito as configurações do banco de dados. Por ter dados sensíveis optei por não subir o modelo correto. 
+- Esse é um projeto pessoal. Sendo assim, diversos trechos do código vão ter explicações sobre determinado assunto que me foi útil ou que possa vir a ser útil.
 
 ## Explicando MVC
 - A parte de controlador, em que é definido a implementação do método, fica dentro de controllers. Seja Get, post, put.  

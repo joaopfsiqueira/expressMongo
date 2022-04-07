@@ -6,6 +6,7 @@ const router = express.Router();
 
 router
     .get('/livros', LivroController.listarLivros)
+    .post('/livros', LivroController.cadastrarLivros)
 
 
 module.exports = router;
