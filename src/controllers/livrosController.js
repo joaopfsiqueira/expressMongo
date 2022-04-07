@@ -57,6 +57,8 @@ class LivroController {
     }
 
     static deletarLivro = (req,res) => {
+        //basicamente uso o findbyid para localizar o livro de acordo com o id digitado no parametro da rota. e ja informo que vou receber erro e o livro.
+        //depois, se não der erro, eu utilizo o metodo "remove" do mongodb para deletar o livro. Esse método recebe um erro e um callback.
         livros.findById(req.params.id, (err, livro) =>{
             if(!err){
                 livro.remove((err) => {
