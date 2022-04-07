@@ -12,6 +12,7 @@ class LivroController {
                 res.status(200).json(livros);
             }
         })
+        
     }
 
 }
