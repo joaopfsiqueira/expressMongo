@@ -5,15 +5,15 @@ const livros = require('../models/Livro');
 class LivroController {
 
     static listarLivros = (req, res) => {
-        livros.find((err, livros) => {
-            if (err) {
-                res.status(500);
-                res.send('Erro ao buscar livros');
-            } else {
-                res.status(200).json(livros);
-            }
-        })
-
+        livros.find()
+            .populate('autor') // basicamente ele vai encontrar os livros e popular com os dados de autor. Ou certo, vai popular com as FK
+            .execute((err, livros) => {
+                if (err) {
+                    res.status(500).send(err);
+                } else {
+                    res.status(200).send(livros);
+                }
+            });
     }
 
     static listarLivroPorId = (req, res) => {
