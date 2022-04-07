@@ -7,7 +7,7 @@ class LivroController {
     static listarLivros = (req, res) => {
         livros.find()
             .populate('autor') // basicamente ele vai encontrar os livros e popular com os dados de autor. Ou certo, vai popular com as FK
-            .execute((err, livros) => {
+            .exec((err, livros) => {
                 if (err) {
                     res.status(500).send(err);
                 } else {
