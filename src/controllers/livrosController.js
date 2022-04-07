@@ -17,7 +17,9 @@ class LivroController {
     }
 
     static listarLivroPorId = (req, res) => {
-        livros.findById(req.params.id, (err, livro) => {
+        livros.findById(id)
+            .populate('autor', 'nome') //nesse caso, só vai trazer o nome do autor, lembrando que o ID é fixo, já que ele é a variavel FK que é utilizada para referenciar o autor.
+            .exec((err, livro) => {
             if (err) {
                 res.status(500);
                 res.send('Erro ao buscar livro');
