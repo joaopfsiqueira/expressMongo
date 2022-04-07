@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const db = require('./config/dbConnect');
-const livros = require('./models/Livro.js');
 const routes = require('./routes/index');
 
 //conexão com o db e configurando mensagem de erro no bind do console.
@@ -19,14 +18,5 @@ app.use(express.json());
 //rota para listar todos os livros, passando o APP instanciado no routes.js
 routes(app)
 
-// const livros = [
-//     {id: 1, "titulo": "Senhor dos aneis", "autor": "J.R.R. Tolkien"},
-//     {id: 2, "titulo": "O Hobbit", "autor": "J.R.R. Tolkien"},
-// ]
-
-function buscaLivro(id) {
-    const livro = livros.findIndex(livro => livro.id == id);
-    return livro;
-}
 
 module.exports = app;
