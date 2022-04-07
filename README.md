@@ -10,6 +10,7 @@ Essa API serve é um projeto feito para por em prática os conhecimentos de expr
 ## Explicando MVC
 - A parte de controlador, em que é definido a implementação do método, fica dentro de controllers. Seja Get, post, put.  
 - Dentro de routes fica as rotas. endpoints e o que vai acontecer assim que aquele endpoint for chamado. Method get, post... etc!
+- O model *REPRESENTA* como é aquela determinada tabela no banco!
 
 
 ## Parâmetros Obrigatórios

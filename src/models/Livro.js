@@ -6,6 +6,10 @@ const livroSchema = new mongoose.Schema({
     autor: { type: String, required: true},
     editora: { type: String, required: true},
     numPaginas: {type: Number},
+    },
+    {
+        //tirando o _v com a versão do mongo
+        versionKey: false,
     }
 );
 
