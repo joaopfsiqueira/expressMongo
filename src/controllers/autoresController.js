@@ -16,7 +16,7 @@ class AutorController {
 
     }
 
-    static listarLivroPorId = (req, res) => {
+    static listarAutorPorId = (req, res) => {
         autores.findById(req.params.id, (err, autor) => {
             if (err) {
                 res.status(500);
@@ -27,7 +27,7 @@ class AutorController {
         })
     }
 
-    static cadastrarAutores = (req, res) => {
+    static cadastrarAutor = (req, res) => {
         //basicamente estou informando que a variável autor vai receber um novo autor que vai vir do body da requisição. (Postman ou insomnia)
         let autor = new autores(req.body);
         //o save é um metodo que persiste o dado recebido no banco de dados.
@@ -41,7 +41,7 @@ class AutorController {
         })
     }
 
-    static atualizarAutores = (req, res) => {
+    static atualizarAutor = (req, res) => {
        let id = req.params.id;  //recebendo o id do autor que vai ser atualizado
 
        //uma das maravilhas do mongo db é o $set.

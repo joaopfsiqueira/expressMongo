@@ -1,5 +1,6 @@
 const express = require('express');
 const livros = require('./livrosRoutes');
+const autores = require('./autoresRoutes');
 
 //o index vai servir para colocar o conjunto de todas as rotas que serão utilizadas. Visto que cada uma fica em seu arquivo route.js
 
@@ -23,7 +24,8 @@ const routes = (app) => {
      //conforme eu vou criando outros arquivos com diversas rotas dentro basta eu colocar dentro do use.
      app.use(
          express.json(),
-         livros
+         livros,
+         autores
     );
 }
 
