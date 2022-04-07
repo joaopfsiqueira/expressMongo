@@ -24,16 +24,6 @@ routes(app)
 //     {id: 2, "titulo": "O Hobbit", "autor": "J.R.R. Tolkien"},
 // ]
 
-
-app.delete('/livros/:id', (req, res) => {
-    let {id} = req.params;
-    let index = buscaLivro(id);
-    livros.splice(index, 1);
-    res.send(`Livro ${id} deletado com sucesso`)
-})
-
-
-
 function buscaLivro(id) {
     const livro = livros.findIndex(livro => livro.id == id);
     return livro;

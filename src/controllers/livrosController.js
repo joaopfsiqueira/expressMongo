@@ -1,6 +1,7 @@
 const livros = require('../models/Livro');
 
 
+//uma class é onde fica os métodos. "os Static", que basicamente são funções que são chamadas no arquivo de rotas.
 class LivroController {
 
     static listarLivros = (req, res) => {
@@ -53,6 +54,23 @@ class LivroController {
                  res.status(500).send({message: err.message});
              }
          })
+    }
+
+    static deletarLivro = (req,res) => {
+        livros.findById(req.params.id, (err, livro) =>{
+            if(!err){
+                livro.remove((err) => {
+                    if(!err){
+                        res.status(200).send({message: 'Livro deletado com sucesso'});
+                    } else {
+                        res.status(500).send({message: err.message});
+                    }
+                })
+            } else {
+                res.status(500).send({message: err.message});
+            }
+        })
+
     }
 } 
 

@@ -9,6 +9,7 @@ router
     .get("/livros/:id", LivroController.listarLivroPorId)
     .post("/livros", LivroController.cadastrarLivros)
     .put("/livros/:id", LivroController.atualizarLivros) // : indica que vai chegar um parametro na rota com o nome especificado.
+    .delete("/livros/:id", LivroController.deletarLivro);
 
 
 module.exports = router;
