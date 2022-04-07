@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const db = require('./config/dbConnect');
 const livros = require('./models/Livro.js');
+const routes = require('./routes/index');
+
 //conexão com o db e configurando mensagem de erro no bind do console.
 db.on("error", console.log.bind(console, 'connection error:'));
 
@@ -13,15 +15,14 @@ db.once("open", () => {
 //fazendo express ouvir json
 app.use(express.json());
 
+
+//rota para listar todos os livros, passando o APP instanciado no routes.js
+routes(app)
+
 // const livros = [
 //     {id: 1, "titulo": "Senhor dos aneis", "autor": "J.R.R. Tolkien"},
 //     {id: 2, "titulo": "O Hobbit", "autor": "J.R.R. Tolkien"},
 // ]
-
-app.get('/', (req, res) => {
-    res.status(200);
-    res.send('Curso de node');
-})
 
 
 app.post('/livros', (req, res) => {
