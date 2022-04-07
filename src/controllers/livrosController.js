@@ -15,6 +15,17 @@ class LivroController {
 
     }
 
+    static listarLivroPorId = (req, res) => {
+        livros.findById(req.params.id, (err, livro) => {
+            if (err) {
+                res.status(500);
+                res.send('Erro ao buscar livro');
+            } else {
+                res.status(200).json(livro);
+            }
+        })
+    }
+
     static cadastrarLivros = (req, res) => {
         //basicamente estou informando que a variável livro vai receber um novo livro que vai vir do body da requisição. (Postman ou insomnia)
         let livro = new livros(req.body);
