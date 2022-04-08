@@ -5,8 +5,8 @@ const LivroController = require('../controllers/livrosController');
 const router = express.Router();
 
 router
+    .get("/livros/busca",  LivroController.listarLivroPorEditora)
     .get("/livros", LivroController.listarLivros)
-    .get("livros/busca",  LivroController.listarLivroPorEditora)
     .get("/livros/:id", LivroController.listarLivroPorId)
     .post("/livros", LivroController.cadastrarLivros)
     .put("/livros/:id", LivroController.atualizarLivros) // : indica que vai chegar um parametro na rota com o nome especificado.

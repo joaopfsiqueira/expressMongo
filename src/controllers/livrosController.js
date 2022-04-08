@@ -4,6 +4,15 @@ const livros = require('../models/Livro');
 //uma class é onde fica os métodos. "os Static", que basicamente são funções que são chamadas no arquivo de rotas.
 class LivroController {
 
+    static listarLivroPorEditora = (req, res) =>{
+        const editora = req.query.editora;//recebendo pela QUERY o nome da editora.
+
+        //criando o método de busca. basicamente localiza dentro do livros o livro em que o editora for igual ao editora que enviaremos pelo query.
+        livros.find({'editora': editora}, {}, (err, livros) => {
+            res.status(200).json(livros);
+        })
+    }
+
     static listarLivros = (req, res) => {
         livros.find()
             .populate('autor') // basicamente ele vai encontrar os livros e popular com os dados de autor. Ou certo, vai popular com as FK
@@ -17,6 +26,7 @@ class LivroController {
     }
 
     static listarLivroPorId = (req, res) => {
+        const id = req.params.id
         livros.findById(id)
             .populate('autor', 'nome') //nesse caso, só vai trazer o nome do autor, lembrando que o ID é fixo, já que ele é a variavel FK que é utilizada para referenciar o autor.
             .exec((err, livro) => {
@@ -33,10 +43,10 @@ class LivroController {
         
         const editora = req.query.editora;//recebendo pela QUERY o nome da editora.
 
-        livros.find({editora: editora}, {}, (err, livros) => {
+        //criando o método de busca. basicamente localiza dentro do livros o livro em que o editora for igual ao editora que enviaremos pelo query.
+        livros.find({'editora': editora}, {}, (err, livros) => {
             if (err) {
-                res.status(500);
-                res.send('Erro ao buscar livro');
+                res.send({message: err.message});
             } else {
                 res.status(200).json(livros);
             }
