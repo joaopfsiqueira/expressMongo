@@ -29,6 +29,20 @@ class LivroController {
         })
     }
 
+    static listarLivroPorEditora = (req, res) =>{
+        
+        const editora = req.query.editora;//recebendo pela QUERY o nome da editora.
+
+        livros.find({editora: editora}, {}, (err, livros) => {
+            if (err) {
+                res.status(500);
+                res.send('Erro ao buscar livro');
+            } else {
+                res.status(200).json(livros);
+            }
+        })
+    }
+
     static cadastrarLivros = (req, res) => {
         //basicamente estou informando que a variável livro vai receber um novo livro que vai vir do body da requisição. (Postman ou insomnia)
         let livro = new livros(req.body);
